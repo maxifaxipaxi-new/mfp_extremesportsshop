@@ -1,8 +1,5 @@
-_____ _____ _____ _____ _____ _____ _____ _____ _____ _____ 
-|     |   __|  _  |   __|     | __  |     |  _  |_   _|   __|
-| | | |   __|   __|__   |   --|    -|-   -|   __| | | |__   |
-|_|_|_|__|  |__|  |_____|_____|__|__|_____|__|    |_| |_____|
-                                                              
+## Tebex Download (to get the version that is up2date!)   
+[https://store.mfpscripts.com](https://mfp.tebex.io/package/4811176)
                                            
 
 ## Requirements
