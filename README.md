@@ -4,6 +4,7 @@ https://www.youtube.com/watch?v=2VuQBsZf4LY
 ## Newest Download   
 [https://store.mfpscripts.com](https://mfp.tebex.io/package/4811176)
                                            
+## Need Icons for QS-QB-OX Inventory? - Use https://items.bit-scripts.com/
 
 ## Requirements
 - [NativeUI](https://github.com/Guad/NativeUI/releases)
