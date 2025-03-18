@@ -1,21 +1,12 @@
-## Preview
-https://www.youtube.com/watch?v=2VuQBsZf4LY 
+# MFP_Extremespotshop
+Ever wanted to got skydiving or just diving in the bay of Los Santos?
+Feel free to do extreme sport with our newest & free Shopsystem made with NativeUI.
 
-## Newest Download   
-[https://store.mfpscripts.com](https://mfp.tebex.io/package/4811176)
-                                           
-## Need Icons for QS-QB-OX Inventory? - Use https://items.bit-scripts.com/
+![430a59a742f35030ec3d767efe4f15661c4636ec](https://github.com/user-attachments/assets/e12c28ab-033a-48d2-a5d7-3ba40db64ff7)
 
-## Requirements
-- [NativeUI](https://github.com/Guad/NativeUI/releases)
 
-## Installation
-- Add this in your `server.cfg`:
-
-```
-start mfp_extremesportsshop
-```
-
+## Showcase
+https://www.youtube.com/watch?v=2VuQBsZf4LY
 
 
 Visit https://mfpscripts.com to see other scripts you'll love!
