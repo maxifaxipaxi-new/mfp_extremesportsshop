@@ -1,78 +1,73 @@
 -- Functions
 
-function getCurrentClientMoney(source)
-    return getCurrentMoney(source)
-end
-
 RegisterNetEvent('mfp_extremesportshops:usedivingmask')
 AddEventHandler('mfp_extremesportshops:usedivingmask', function(source)
     changeClothing()
 end)
 
 -- Menu
------------------------------------
 _menuPool = NativeUI.CreatePool()
 local mainMenu
 local fallschirmMenu
 local tauchermaskenMenu
+local debug = false
 
 Citizen.CreateThread(function()
     while true do
-
         _menuPool:ProcessMenus()
-
         local playerPed = PlayerPedId()
         local playerCoords = GetEntityCoords(playerPed)
-		for k,v in pairs(Config.ShopLocations) do
-			if GetDistanceBetweenCoords(playerCoords, v.x, v.y, v.z, true) < 1.5 then
-		ShowInputNotification(Translation['open_menu']) end
-        if IsControlJustReleased(0, 38) then
-		if GetDistanceBetweenCoords(playerCoords, v.x, v.y, v.z, true) < 1.5 then
-            
-                openMenu()
-            else
-
+        for k, shopCoords in pairs(Config.ShopLocations) do
+            local dist = #(playerCoords - shopCoords)
+            if dist < 1.5 then
+                ShowInputNotification(Translation['open_menu'])
+                if IsControlJustReleased(0, 38) then
+                    openMenu()
+                end
             end
-        end end
+        end
 
         Citizen.Wait(1)
-
     end
-	
 end)
 
 function openMenu()
     mainMenu = NativeUI.CreateMenu(Translation['dealer'], Translation['dealer_subtitle'])
     _menuPool:Add(mainMenu)
-	
-	local moneyshow = NativeUI.CreateItem(Translation['money_in_cash'], '')
+
+    local moneyshow = NativeUI.CreateItem(Translation['money_in_cash'], '')
     mainMenu:AddItem(moneyshow)
-	
-	local empty = NativeUI.CreateItem('-----------', '')
+
+    local empty = NativeUI.CreateItem('-----------', '')
     mainMenu:AddItem(empty)
 
-    local falschirmkauf3 = NativeUI.CreateItem(Translation['parachute'], Translation['parachute_subtitle']) -- 'Fallschirm', 'Kaufen Sie einen ~o~Fallschirm~s~ und heben Sie ab.'
+    local falschirmkauf3 = NativeUI.CreateItem(Translation['parachute'], Translation['parachute_subtitle'])
     mainMenu:AddItem(falschirmkauf3)
-	
-	local tauchermaskenkauf3 = NativeUI.CreateItem(Translation['divingmask'], Translation['divingmask_subtitle']) -- 'Tauchermaske', 'Kaufen Sie eine ~b~Tauchermaske~s~ und erkunden Sie Gewässer.'
+
+    local tauchermaskenkauf3 = NativeUI.CreateItem(Translation['divingmask'], Translation['divingmask_subtitle'])
     mainMenu:AddItem(tauchermaskenkauf3)
-	
-    local money = getCurrentClientMoney(source)
-	moneyshow:RightLabel('~g~$' .. money .. ',00')
-	
+
+    moneyshow:RightLabel('~g~Loading...')
+
+    getCurrentClientMoney(function(money)
+        money = math.floor(money)
+        moneyshow:RightLabel('~g~$' .. money .. ',00')
+    end)
+
+
     falschirmkauf3:RightLabel('→')
-	tauchermaskenkauf3:RightLabel('→')
+    tauchermaskenkauf3:RightLabel('→')
 
     falschirmkauf3.Activated = function(sender, index)
-        
-		mainMenu:Visible(false)
-		openFallschirm()
+        mainMenu:Visible(false)
+        openFallschirm()
     end
-	tauchermaskenkauf3.Activated = function(sender, index)
-		mainMenu:Visible(false)
-		openTauchermasken()
+
+    tauchermaskenkauf3.Activated = function(sender, index)
+        mainMenu:Visible(false)
+        openTauchermasken()
     end
-	
+
     mainMenu:Visible(true)
     _menuPool:MouseEdgeEnabled(false)
 end
@@ -100,7 +95,6 @@ function openFallschirm()
     fallschirmMenu:Visible(true)
     _menuPool:MouseEdgeEnabled(false)
 end
-
 
 function openTauchermasken()
     tauchermaskenMenu = NativeUI.CreateMenu(Translation['divingmask'], Translation['buyorsell'])

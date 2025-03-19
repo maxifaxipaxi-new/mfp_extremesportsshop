@@ -43,6 +43,16 @@ end)]]
 end)]]
 
 -- Data-Handling
+
+function getCurrentClientMoney(callback)
+    --QBCore.Functions.TriggerCallback('mfp_extremesportshops:getMoney', function(money)
+    -- add your callback like the qb example up here
+        if callback then
+            callback(money)
+        end
+    --end)
+end
+
 function getPlayer(source)
     return nil -- add own getPlayer
 end
@@ -59,8 +69,14 @@ function addMoney(xPlayer, amount)
     -- add own addMoney
 end
 
-function hasItem(xPlayer, item)
-   -- add own hasItem
+function hasItem(player, item)
+    if player and player.Functions then
+        local inventoryItem = nil -- add your getItembyName function
+        return inventoryItem and inventoryItem.amount >= 1 or false
+    else
+        print("ERROR: player is nil")
+        return false
+    end
 end
 
 function addItem(xPlayer, item, count)

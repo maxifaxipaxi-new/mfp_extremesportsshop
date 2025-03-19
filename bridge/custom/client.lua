@@ -19,7 +19,7 @@ end)
 --------------------------------------------
 -- custom/client.lua
 
-function getCurrentMoney(source)
+function getCurrentClientMoney(source)
     -- implement callback for your framework at server.lua getMoney Function
     return 0
 end
