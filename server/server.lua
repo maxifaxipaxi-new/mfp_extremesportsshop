@@ -1,5 +1,3 @@
--- server.lua
-
 -- Logging
 RegisterServerEvent('mfp_extremesportshops:discordlog')
 AddEventHandler('mfp_extremesportshops:discordlog', function(message, webhook)

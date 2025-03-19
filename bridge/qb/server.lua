@@ -27,10 +27,10 @@ end
 QBCore.Functions.CreateCallback('mfp_extremesportshops:getMoney', function(source, cb)
     local Player = QBCore.Functions.GetPlayer(source)
     if Player then
-        local money = Player.Functions.GetMoney("cash") -- Nur Bargeld
+        local money = Player.Functions.GetMoney("cash")
         cb(money)
     else
-        cb(0) -- Falls kein Spieler gefunden wurde
+        cb(0)
     end
 end)
 
@@ -58,8 +58,14 @@ local function addMoney(xPlayer, amount)
     xPlayer.Functions.AddMoney("cash", amount)
 end
 
-local function hasItem(xPlayer, item)
-    return xPlayer.Functions.GetItemByName(item) ~= nil
+function hasItem(player, item)
+    if player and player.Functions then
+        local inventoryItem = player.Functions.GetItemByName(item)
+        return inventoryItem and inventoryItem.amount >= 1 or false
+    else
+        print("ERROR: player is nil")
+        return false
+    end
 end
 
 local function addItem(xPlayer, item, count)

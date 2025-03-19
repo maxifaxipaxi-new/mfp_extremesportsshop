@@ -19,12 +19,13 @@ end)
 -------------------------------------
 -- qb/client.lua
 
-function getCurrentMoney(source, cb)
+function getCurrentClientMoney(callback)
     QBCore.Functions.TriggerCallback('mfp_extremesportshops:getMoney', function(money)
-        return money
+        -- Wenn der Callback aufgerufen wird, gib das 'money' an den übergebenen Callback zurück
+        if callback then
+            callback(money)
+        end
     end)
-
-    return 0
 end
 
 -- added to bridge if for custom script is framework needed

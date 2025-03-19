@@ -71,7 +71,12 @@ function addMoney(xPlayer, amount)
 end
 
 function hasItem(xPlayer, item)
-    return xPlayer.getInventoryItem(item).count >= 1
+    if xPlayer and xPlayer.getInventoryItem then
+        local inventoryItem = xPlayer.getInventoryItem(item)
+        return inventoryItem and inventoryItem.count >= 1 or false
+    else
+        return false
+    end
 end
 
 function addItem(xPlayer, item, count)

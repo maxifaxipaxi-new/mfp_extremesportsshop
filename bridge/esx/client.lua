@@ -34,13 +34,15 @@ Loaded = true
 
 -- esx/client.lua
 
-function getCurrentMoney(source)
+function getCurrentClientMoney(callback)
     ESX.TriggerServerCallback('mfp_extremesportshops:getMoney', function(money)
-        return money
+        if callback then
+            callback(money)
+        end
     end)
-    
-    return 0
 end
+
+
 
 -- added to bridge if for custom script is framework needed
 function changeClothing()

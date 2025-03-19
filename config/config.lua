@@ -19,10 +19,15 @@ DiscordWebhook = {
     ['webhook'] = '',
 }
 
--- Locations
+--[[Locations
 Config.ShopLocations = {
     { ['x'] = -1351.53,  ['y'] = -1128.42,  ['z'] = 3.11} -- more possible
+}]]
+
+Config.ShopLocations = {
+    vector3(-1351.53, -1128.42, 3.11) -- Nutzt Vektor statt Tabelle
 }
+
     
 Config.Npc = { -- coords to add more npc's dealers you want
    { ['x'] = -1351.53, ['y'] = -1128.42, ['z'] = 3.11, ['h'] = 57.61}, -- more possible    
